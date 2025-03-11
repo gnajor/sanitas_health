@@ -12,7 +12,4 @@ async function test(){
 
 test(); */
 
-import { renderHomePage } from "./pages/homePage/homePage.js";
-
-renderHomePage("#wrapper");
 
