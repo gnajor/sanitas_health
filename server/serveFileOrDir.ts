@@ -1,5 +1,5 @@
 import { serveDir } from "jsr:@std/http/file-server";
-import { handleApiRequests } from "../api/handleApiRequests.ts"
+import { handleRequests } from "../api/handleRequests.ts"
 
 export function serveFileOrDir(request: Request){
     const pathname = new URL(request.url).pathname;
