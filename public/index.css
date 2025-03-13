@@ -1,0 +1,39 @@
+:root{
+    --text-color-white: #ECECEC;
+}
+
+*{
+    box-sizing: border-box;
+}
+
+html{
+    font-size: 16px;
+}
+
+body{
+    margin:0;
+}
+
+h1{
+    font-size: 4rem;
+}
+
+h3{
+    font-size:1.5rem;
+}
+
+/* home-page */
+
+
+#home-page #image-container{
+    background-image: url("media/images/homePage_doctor.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding:10rem;
+}
+
+#home-page #image-container #content{
+    color: var(--text-color-white);
+}
+
+

@@ -7,9 +7,9 @@ export function renderHomePage(parentId){
                             <header></header>
                             <main>
                                 <div id="image-container">
-                                    <div>
+                                    <div id="content">
                                         <h1>Your Health,<br> Our Priority </h1>
-                                        <p>Your well-being is at the heart of everything we do, ensuring expert care with a human touch</p>
+                                        <h3>Your well-being is at the heart of everything we do, ensuring expert care with a human touch</h3>
                                         <button>
                                             <span>Become a patient</span>
                                             <div id="arrow-icon"></div>
