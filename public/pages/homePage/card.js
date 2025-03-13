@@ -1,6 +1,6 @@
 export function renderHomePageCard(parentId, data){
     const parent = document.querySelector(parentId);
-    parent.innerHTML = `<div id="card">
+    parent.innerHTML += `<div id="card">
                             <div class="line"></div>
                             <div class="text-container">
                                 <h2>${data.header}</h2>

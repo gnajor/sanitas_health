@@ -1,6 +1,23 @@
 :root{
     --text-color-white: #ECECEC;
+    --logo-color: #1E7D6E;
 }
+
+@font-face {
+    font-family: "inria-serif";
+    src: url("./media/fonts/Inria_Serif/InriaSerif-Bold.ttf");
+}
+
+@font-face {
+    font-family: "inter";
+    src: url("./media/fonts/Inter/Inter-VariableFont_opsz\,wght.ttf");
+}
+
+@font-face {
+    font-family: "tinos";
+    src: url("./media/fonts/Tinos/Tinos-Regular.ttf");
+}
+
 
 *{
     box-sizing: border-box;
@@ -16,11 +33,23 @@ body{
 
 h1{
     font-size: 4rem;
+    margin:0;
 }
 
 h3{
     font-size:1.5rem;
+    margin: 0;
 }
+
+button{
+    border: none;
+    border-radius: 0;
+    font-family: inter;
+}
+
+/* button:hover{
+    background-color: ;
+} */
 
 /* home-page */
 
@@ -29,11 +58,38 @@ h3{
     background-image: url("media/images/homePage_doctor.png");
     background-repeat: no-repeat;
     background-size: cover;
-    padding:10rem;
+    padding:6% 5rem;
 }
 
 #home-page #image-container #content{
     color: var(--text-color-white);
+    font-family: tinos;
+    max-width: 28rem;
+
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+#home-page #image-container #content h1,
+#home-page #image-container #content h3{
+    font-weight: normal;
+}
+
+#home-page #image-container #content button{
+    width: fit-content;
+    padding:0.75rem 1.5rem;
+    margin-top:1rem;
+    font-size: 0.875rem;
+    background-color: var(--logo-color);
+    color: var(--text-color-white);
+
+    display: flex;
+    gap:1rem;
+}
+
+#home-page #image-container #content button img{
+    width: 0.5rem;
 }
 
 

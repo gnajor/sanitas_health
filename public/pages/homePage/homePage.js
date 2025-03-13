@@ -12,7 +12,7 @@ export function renderHomePage(parentId){
                                         <h3>Your well-being is at the heart of everything we do, ensuring expert care with a human touch</h3>
                                         <button>
                                             <span>Become a patient</span>
-                                            <div id="arrow-icon"></div>
+                                            <img id="arrow-icon" src="../../media/icons/arrow.svg">
                                         </button>
                                     </div>
                                 </div>
@@ -39,7 +39,7 @@ const cardsData = [
         header: "Find the Right Doctor with Ease",
         text: "Our search function lets you quickly find a doctor by specialty, location, and availability. Simply filter through our network to discover the right healthcare professional for your needs, making it easier than ever to get the care you deserve.",
         link: "Find a Doctor",
-        img: "",
+        img: "../../media/images/doctors.png",
         func: () => {
             //pageHandler
         }
@@ -48,7 +48,7 @@ const cardsData = [
         header: "Hassle-Free Appointment Booking",
         text: "Booking an appointment is simple and fast. Choose your doctor, pick a convenient time, and confirm your visit with just a few clicks. Our user-friendly system ensures you can schedule your healthcare without the hassle.",
         link: "Make an Appointment",
-        img: "",
+        img: "../../media/images/computer.png",
         func: () => {
             //pageHandler
         }
@@ -57,7 +57,7 @@ const cardsData = [
         header: "Easy & Secure Records Access",
         text: "Access your medical records anytime, anywhere, with our secure system. View past appointments, treatments, and prescriptions, all in one place, ensuring that your health information is always accessible and private.",
         link: "View My Records",
-        img: "",
+        img: "../../media/images/equipment.png",
         func: () => {
             //pageHandler
         }
