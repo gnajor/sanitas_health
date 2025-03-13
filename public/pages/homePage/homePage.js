@@ -2,7 +2,8 @@ import { renderHomePageCard } from "./card.js";
 
 export function renderHomePage(parentId){
     const parent = document.querySelector(parentId);
-    parent.innerHMTL = `<div id="home-page">
+
+    parent.innerHTML = `<div id="home-page">
                             <header></header>
                             <main>
                                 <div id="image-container">
