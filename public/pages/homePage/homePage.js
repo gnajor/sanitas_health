@@ -1,3 +1,4 @@
+import { renderHeader } from "../../components/header.js";
 import { renderHomePageCard } from "./card.js";
 
 export function renderHomePage(parentId){
@@ -22,6 +23,7 @@ export function renderHomePage(parentId){
 
     const header = parent.querySelector("header");
     const button = parent.querySelector("button");
+    renderHeader("header");
 
     button.addEventListener("click", (event) => {
         //pageHandler.

@@ -15,8 +15,8 @@ export function renderHeader(parentId){
                         </nav>`;
 
     const doctorAnchor = parent.querySelector("#doctor-item");
-    const appointmentAnchor = parent.querySelector("appointment-item");
-    const aboutUsAnchor = parent.querySelector("about-us-item");
+    const appointmentAnchor = parent.querySelector("#appointment-item");
+    const aboutUsAnchor = parent.querySelector("#about-us-item");
     const priceListAnchor = parent.querySelector("#price-list-item");
 
     doctorAnchor.addEventListener("click", () => {});

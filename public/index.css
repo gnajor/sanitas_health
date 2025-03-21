@@ -2,6 +2,7 @@
     --text-color-white: #ECECEC;
     --logo-color: #1E7D6E;
     --text-color-black: #3C3C3C;
+    --background-white:#F9F6EF
 }
 
 @font-face {
@@ -75,6 +76,12 @@ button{
     cursor: pointer;
 }
 
+header{
+    position: sticky;
+    top:0;
+    background-color: var(--background-white);
+}
+
 nav{
     display:flex;
     height: 70px;
@@ -92,7 +99,7 @@ nav{
 
 /* header */
 
-nav #menu-container{
+header nav #menu-container{
     display: flex;
     align-items: center;
     gap:2rem;
@@ -101,23 +108,23 @@ nav #menu-container{
     height: 100%;
 }
 
-nav #menu-container a{
+header nav #menu-container a{
     color: var(--text-color-black);
     font-weight: 500;
     padding:1.5rem 0;
 }
 
-nav #logo-container{
+header nav #logo-container{
     display: flex;
     align-items: center;
     gap:1rem;
 }
 
-nav #logo-container img{
+header nav #logo-container img{
     width: 2rem;
 }
 
-nav #login-button{
+header nav #login-button{
     background-color: var(--logo-color);
     color: var(--text-color-white);
     padding:0.375rem 1.25rem;
@@ -126,10 +133,10 @@ nav #login-button{
 }
 
 
-
-
 /* home-page */
-
+#home-page{
+    background-color: var(--background-white);
+}
 
 #home-page #image-container{
     background-image: url("media/images/homePage_doctor.png");
