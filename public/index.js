@@ -1,4 +1,5 @@
-import { renderHomePage } from "./pages/homePage/homePage.js";
+import { renderHeader } from "./components/header.js";
 
 
-renderHomePage("#wrapper");
+
+renderHeader("#wrapper");
