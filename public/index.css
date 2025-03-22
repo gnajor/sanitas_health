@@ -1,8 +1,15 @@
 :root{
     --text-color-white: #ECECEC;
     --logo-color: #1E7D6E;
+    --darker-logo-color: #176B5E;
     --text-color-black: #3C3C3C;
-    --background-white:#F9F6EF
+    --background-white:#F9F6EF;
+    --dark-green: #07383E;
+    --input-border: #ACACAC;
+    --input-label: #707070;
+    --light-green: #DEE4DD;
+    --darker-white: #DADADA;
+    --darkest-green:#051F21;
 }
 
 @font-face {
@@ -69,6 +76,45 @@ a{
     cursor: pointer;
 }
 
+span{
+    display: block;
+    font-family: inter;
+    font-size: 0.875rem;
+}
+
+span.label-input{
+    color: var(--input-label);
+}
+
+input,
+select{
+    display: block;
+    width: 100%;
+    border:1px solid var(--input-border);
+    border-radius: 4px;
+    font-family: inter;
+    padding-left:0.75rem;
+    height: 2.75rem;
+    font-size: 1rem;
+    background-color: inherit;
+}
+
+option{
+    font-family: inter;
+}
+
+input[type="text"]:focus {
+    outline: none;
+    box-shadow: 0px 0px 5px #61C5FA;
+    border:1px solid #5AB0DB;
+}
+input[type="text"]:focus:hover {
+    outline: none;
+    box-shadow: 0px 0px 5px #61C5FA;
+    border:1px solid #5AB0DB;
+    border-radius:0;
+}
+
 button{
     border: none;
     border-radius: 0;
@@ -89,6 +135,23 @@ nav{
     justify-content: space-between;
     padding:0 5rem;
     box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 0.25);
+}
+
+.input-container{
+    display: flex;
+    flex-direction: column;
+    gap:0.125rem;
+}
+
+.close{
+    position: absolute;
+    padding:2rem;
+    right:0;
+    background-color: transparent;
+}
+
+.close img{
+    width: 1rem;
 }
 
 
@@ -114,13 +177,13 @@ header nav #menu-container a{
     padding:1.5rem 0;
 }
 
-header nav #logo-container{
+header nav .logo-container{
     display: flex;
     align-items: center;
     gap:1rem;
 }
 
-header nav #logo-container img{
+header nav .logo-container img{
     width: 2rem;
 }
 
@@ -133,7 +196,162 @@ header nav #login-button{
 }
 
 
+/* login-side-menu */
+
+#login-menu.open #login{
+    right: 0;
+}
+
+#login,
+#edit-profile{
+    position: fixed;
+    top:0;
+    right:-22rem;
+    width: 22rem;
+    min-height: 100vh;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.50);
+    background-color: var(--background-white);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    transition: right 300ms ease-in-out;
+}
+
+#login > div,
+#edit-profile > div{
+    padding:0 2rem;
+}
+
+#login #title h2,
+#edit-profile #title h2{
+    font-size:2.5rem;
+    font-family: inria-serif;
+    text-align: center;
+    color: var(--dark-green);
+    margin:4rem 0;
+}
+
+#login #login-container{
+    display: flex;
+    flex-direction: column;
+    gap:1rem;
+}
+
+#login #login-container input{
+    height: 2.5rem;
+}
+
+#login #login-container button{
+    background-color: var(--dark-green);
+    color:var(--text-color-white);
+    width: 100%;
+    padding:0.8rem 0;
+    font-weight: 600;
+    font-size: 1rem;
+    border-radius: 4px;
+}
+
+
+#login #register-container{
+    padding-top:2.25rem;
+    padding-bottom: 4rem;
+    background-color: var(--light-green);
+    display: flex;
+    flex-direction: column;
+    gap:1.5rem;
+}
+
+#login #register-container h3{
+    font-family: inter;
+    font-size:1.25rem;
+    font-weight: 600;
+    color: var(--dark-green);
+    text-align: center;
+}
+
+#login #register-container p{
+    text-align: center;
+    font-weight: normal;
+    font-size: 1rem;
+    line-height: 1.4;
+    margin: 0;
+}
+
+#login #register-container button{
+    font-weight: 600;
+    color: var(--text-color-white);
+    font-size: 1rem;
+    background-color: var(--logo-color);
+    width: 100%;
+    padding:0.8rem 0;
+    border-radius: 4px;
+}
+
+
+/* edit-profile */
+
+#wrapper #edit-profile{
+    justify-content:inherit;
+}
+
+#edit-profile #inputs-container{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap:1.25rem;
+} 
+
+#edit-profile #inputs-container input,
+#edit-profile #inputs-container select{
+    pointer-events: none;
+}
+
+#edit-profile #inputs-container #f-name,
+#edit-profile #inputs-container #l-name,
+#edit-profile #inputs-container #adress{
+    grid-column: 1 / 2 span;
+}
+
+#edit-profile #button-container{
+    margin-top:3rem;
+    display: flex;
+    flex-direction: column;
+    gap:1rem;
+}
+
+#edit-profile #button-container button{
+    display: flex;
+    justify-content: center;
+
+    font-weight: 600;
+    font-size: 1rem;
+    width: 100%;
+    padding:0.8rem 0;
+    border-radius: 4px;
+}
+
+#edit-profile #edit-button{
+    color: var(--text-color-white);
+    background-color: var(--dark-green);
+}
+
+#edit-profile #logout-button{
+    background-color: var(--input-label);
+    color: var(--text-color-white);
+}
+
+
+
+
+
+
+
 /* home-page */
+
+
+
+
 #home-page{
     background-color: var(--background-white);
 }
@@ -176,8 +394,6 @@ header nav #login-button{
 #home-page #image-container #content button img{
     width: 0.5rem;
 }
-
-
 
 #home-page #cards-container{
     padding:5rem 8%;
@@ -235,6 +451,201 @@ header nav #login-button{
     align-items: center;
     gap:0.75rem;
 }
+
+#home-page #cards-container .card a span{
+    font-size: 1.125rem;
+}
+
+
+/* register-page */
+
+#register-page{
+    display: flex;
+}
+
+#register-page > div{
+    min-height: 100vh;
+}
+
+#register-page #left-side{
+    width: 50rem;
+    background-color: var(--darker-logo-color);
+
+    display: flex;
+    flex-direction: column;
+    justify-content:space-between;
+    padding:2.75rem 4rem;
+}
+
+#register-page #left-side .logo-container{
+    display: flex; 
+    gap:1rem;
+    align-items: center;
+}   
+
+#register-page #left-side .logo-container img{
+    height: 2.25rem;
+}
+
+#register-page #left-side .logo-container h2{
+    font-size: 2.5rem;
+    color: var(--text-color-white);
+}
+
+#register-page #left-side #main-content{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    top:-3.5rem;
+}
+
+#register-page #left-side #main-content h1{
+    color: var(--text-color-white);
+    font-weight: normal;
+    font-family: tinos;
+}
+
+#register-page #left-side #main-content p{
+    color: var(--darker-white);
+    line-height: 1.4;
+    font-family: tinos;
+    font-size: 1.25rem;
+}
+
+#register-page #left-side button{
+    display: flex;
+    gap:1rem;
+    justify-content: center;
+
+    background-color: var(--background-white);
+    color: var(--darker-logo-color);
+    padding:1rem 0;
+    border-radius: 4px;
+}
+
+#register-page #left-side button img{
+    width: 0.75rem;
+}
+
+#register-page #left-side button span{
+    font-family: inter;
+    font-weight: 600;
+    font-size: 1.25rem;
+}
+
+
+#register-page #right-side{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+#register-page #right-side h2{
+    font-size: 2.25;
+    color: var(--dark-green);
+    margin-bottom: 3.5rem;
+}
+
+#register-page #right-side #inputs-container{
+    width: 35rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap:1.5rem;
+}
+
+#register-page #right-side #inputs-container input,
+#register-page #right-side #inputs-container select{
+    background-color: var(--background-white);
+    color: var(--dark-green);
+}
+
+#register-page #right-side .input-container:nth-child(3),
+#register-page #right-side .input-container:nth-child(6){
+    grid-column: 1 / span 2;
+}
+
+#register-page #right-side button{
+    width: 100%;
+    background-color: var(--darker-logo-color);
+    color: var(--text-color-white);
+    padding:1rem 0;
+    font-size: 1.25rem;
+    margin-top:3rem;
+    border-radius: 4px;
+}
+
+
+/* profilePage */
+
+
+#profile-page{
+    background-color: var(--background-white);
+    min-height: 100vh;
+}
+
+#profile-page #top-side{
+    background-color: var(--light-green);
+}
+
+#profile-page #top-side h2{
+    font-family: tinos;
+    font-weight: normal;
+    color:var(--logo-color);
+    text-align: center;
+    padding:5rem 0;
+    font-size: 2.25rem;
+}
+
+#profile-page #cards-container{
+    display: flex;
+    flex-wrap: wrap;
+    padding:8rem 0;
+    justify-content: center;
+    width: 100%;
+    gap:6rem;
+}
+
+#profile-page #cards-container .card{
+    width: 20rem;
+    border-top: 5px solid var(--logo-color);
+    text-align: center;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    padding:4rem 1.625rem;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap:2rem;
+}
+
+#profile-page #cards-container .card img{
+    height: 4.25rem;
+}
+
+
+#profile-page #cards-container .card h3{
+    font-family: inter;
+    font-weight: 600;
+    color: var(--darkest-green);
+}
+
+#profile-page #cards-container .card p{
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--text-color-black);
+    margin: 0.5rem 0;
+}
+
+#profile-page #cards-container .card button{
+    padding:0.75rem 2.5rem;
+    font-weight: 600;
+    background-color: var(--logo-color);
+    color: var(--text-color-white);
+    border-radius: 4px;
+}
+
 
 
 

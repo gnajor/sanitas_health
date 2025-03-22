@@ -1,6 +1,8 @@
-import { renderHomePage } from "./pages/homePage/homePage.js";
+/* import { pageHandler } from "./pageHandler/pageHandler.js";
+
+pageHandler.handleHomePageRender(); */
+
+import { renderEditProfile } from "./components/editMenu.js";
 
 
-
-
-renderHomePage("#wrapper");
+renderEditProfile("#wrapper");

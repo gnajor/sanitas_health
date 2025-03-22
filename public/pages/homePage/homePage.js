@@ -1,4 +1,5 @@
 import { renderHeader } from "../../components/header.js";
+import { pageHandler } from "../../pageHandler/pageHandler.js";
 import { renderHomePageCard } from "./card.js";
 
 export function renderHomePage(parentId){
@@ -26,11 +27,10 @@ export function renderHomePage(parentId){
     renderHeader("header");
 
     button.addEventListener("click", (event) => {
-        //pageHandler.
+        pageHandler.handleRegisterPageRender();
     });
 
     for(const cardData of cardsData){
-        //should use Pubsub or pageHandler
         renderHomePageCard("#cards-container", cardData);
     }
 }

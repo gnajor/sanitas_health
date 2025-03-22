@@ -16,6 +16,5 @@ export function renderHomePageCard(parentId, data){
                         </div>`;
 
     const cardLink = parent.querySelector(".card-link");
-
     cardLink.addEventListener("click", data.func);
 }
