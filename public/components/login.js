@@ -26,16 +26,20 @@ export function renderLoginMenu(parentId){
                             </div>
                         </div>`;
 
+    const medNumInput = parent.querySelector("input");
+
     const loginButton = parent.querySelector("#login-button");
     const registerButton = parent.querySelector("#register-button");
-    const closeLogin = parent.querySelector(".close-login");
+    const closeLogin = parent.querySelector(".close");
 
     closeLogin.addEventListener("click", () => {
         parent.classList.remove("open");
     });
 
     loginButton.addEventListener("click", () => {
-        pageHandler.handleProfilePageRender();
+        pageHandler.handleLogin(medNumInput.value);
+        
+        //pageHandler.handleProfilePageRender();
     });
 
     registerButton.addEventListener("click", () => {
