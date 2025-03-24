@@ -5,10 +5,18 @@ export async function apiCom(action, data){
         case "login": {
             options.method = "POST";
             options.body = {
-                idNum: data.idNum
+                id_num: data.id_num
             }
-            
-            const resource = await fetcher("../../api/handleRequests", options);
+
+            const resource = await fetcher("../../api/login", options);
+            return resource;
+        }
+
+        case "editProfile": {
+            options.method = "POST";
+            options.body = data;
+
+            const resource = await fetcher("../../api/editProfile", options);
             return resource;
         }
 

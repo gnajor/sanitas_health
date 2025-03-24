@@ -8,30 +8,44 @@ export const pageHandler = {
     parentId: "#wrapper",
 
     handleHomePageRender(){
+        App.setLastPageVisitedSessionStorage("homePage");
         renderHomePage(this.parentId);
     },
 
     handleProfilePageRender(){
-        renderProfilePage(this.parentId);
+        App.setLastPageVisitedSessionStorage("profilePage");
+        renderProfilePage(this.parentId, App.getCurrentUserData());
     },
 
     handleRegisterPageRender(){
+        App.setLastPageVisitedSessionStorage("registerPage");
         renderRegisterPage(this.parentId);
     },
 
-    handleLogin(digit){
+    async handleLogin(digit){
         if(digit === "admin"){
             App.setUserData({
                 role: "admin"
             });
         }
         else{
-            const resource = apiCom("login", {
-                idNum: digit
+            const resource = await apiCom("login", {
+                id_num: digit
             });
 
-            App.setUserData(resource);
+            if(resource){
+                App.setUserData(resource.dbData);
+                this.handleProfilePageRender();
+            }
         }
-    }
+    },
 
+    async handleProfileChange(dataChange){
+        const changedData = App.getChangedData(dataChange);
+
+        console.log(changedData);
+
+        App.setChangedData(changedData);
+        apiCom("edit-profile", changedData);
+    }
 } 

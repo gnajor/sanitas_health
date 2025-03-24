@@ -1,5 +1,8 @@
-export function renderEditProfile(parentId){
+import { pageHandler } from "../pageHandler/pageHandler.js";
+
+export function renderEditProfile(parentId, userdata){
     const parent = document.querySelector(parentId);
+    console.log(userdata);
 
     parent.innerHTML = `<div id="edit-profile">
                             <button class="close">
@@ -9,37 +12,34 @@ export function renderEditProfile(parentId){
                                 <h2>Leo Mühl</h2>
                             </div>
                             <div id="input-containers">
-                                <div id="inputs-container">
+                                <div id="inputs-container" class="no-edit">
                                     <div class="input-container" id="f-name">
                                         <span class="label-input">First name</span>
-                                        <input value="Leo">
+                                        <input value=${userdata.firstname}>
                                     </div>
                                     <div class="input-container" id="l-name">
                                         <span class="label-input">Last name</span>
-                                        <input value="Mühl">
+                                        <input value=${userdata.lastname}>
                                     </div>
                                     <div class="input-container" id="tel-num">
                                         <span class="label-input" type="number">Telephone number</span>
-                                        <input value="0721901328">
+                                        <input value=${userdata.phone_num}>
                                     </div>
                                     <div class="input-container" id="gender">
                                         <span class="label-input">Gender</span>
-                                        <select>
-                                            <option value="male">Male</option>
-                                            <option value="female">Female</option>
-                                        </select>
+                                        <select></select>
                                     </div>
                                     <div class="input-container" id="adress">
                                         <span class="label-input">Adress</span>
-                                        <input value="Svedala, Byggmästaregatan 2">
+                                        <input value=${userdata.adress}>
                                     </div>
                                     <div class="input-container" id="birthdate">
                                         <span class="label-input">Birthdate</span>
-                                        <input value="2004-07-31" type="date">
+                                        <input value=${userdata.birthdate} type="date">
                                     </div>
                                     <div class="input-container" id="med-num">
                                         <span class="label-input" type="number">Medical number</span>
-                                        <input value="0721901328">
+                                        <input value=${userdata.id_num}>
                                     </div>
                                 </div>
                             </div>
@@ -48,6 +48,7 @@ export function renderEditProfile(parentId){
                                     <img src="">
                                     <span>Edit</span>
                                 </button>
+                                <button id="confirm-button" class="none">Confirm</button>
                                 <button id="logout-button">
                                     <img src="">
                                     <span>Logout</span>
@@ -58,11 +59,56 @@ export function renderEditProfile(parentId){
     const editButton = parent.querySelector("#edit-button");
     const logoutButton = parent.querySelector("#logout-button");
     const closeButton = parent.querySelector(".close");
+    const confirmButton = parent.querySelector("#confirm-button");
+
+    const inputsContainer = parent.querySelector("#inputs-container");
+
+    const select = parent.querySelector("select");
+    const fNameInput = parent.querySelector("#f-name");
+    const lNameInput = parent.querySelector("#l-name");
+    const telNumInput = parent.querySelector("#tel-num");
+    const adressInput = parent.querySelector("#adress");
+    const birthDateInput = parent.querySelector("#birthdate");
+
+
+    if(userdata.gender === "male"){
+        select.innerHTML = `<option value="male">Male</option>
+                            <option value="female">Female</option>`;
+    }
+    else{
+        select.innerHTML = `<option value="female">Female</option>
+                            <option value="male">Male</option>`;
+    }
 
     closeButton.addEventListener("click", () => {
         parent.classList.remove("open");
     });
-    editButton.addEventListener("click", () => {});
-    logoutButton.addEventListener("click", () => {});
+
+    confirmButton.addEventListener("click", () => {
+        const dataChange = {
+            firstname: fNameInput.value,
+            lastname: lNameInput.value,
+            phone_num: telNumInput.value,
+            adress: adressInput.value,
+            birthdate: birthDateInput.value,
+            gender: select.value,
+        }
+        confirmButton.classList.add("none");
+        editButton.classList.remove("none");
+        inputsContainer.classList.add("no-edit");
+
+
+        pageHandler.handleProfileChange(dataChange);
+    });
+
+    editButton.addEventListener("click", () => {
+        editButton.classList.add("none");
+        inputsContainer.classList.remove("no-edit");
+        confirmButton.classList.remove("none");
+    });
+
+    logoutButton.addEventListener("click", () => {
+
+    });
 
 }

@@ -2,46 +2,73 @@ import { pageHandler } from "./pageHandler/pageHandler.js";
 
 export const App = {
     user:{
-        loggedIn: null,
+        logged_in: null,
         patient: null,
         admin:null,
-        idNum: null,
-        f_name: null,
-        l_name: null,
-        phoneNum: null,
+        id_num: null,
+        firstname: null,
+        lastname: null,
+        phone_num: null,
         gender: null,
         adress: null,
-        birthDate: null,
-        regDate: null,
+        birthdate: null,
+        reg_date: null,
     },
 
 
     render(){
-        pageHandler.handleHomePageRender();
+        if(sessionStorage.getItem("logged_in")){
+            this.setUserFromSessionStorage();
+        }
+
+        if(sessionStorage.getItem("lastVisited")){
+            switch(sessionStorage.getItem("lastVisited")){
+                case "homePage":
+                    pageHandler.handleHomePageRender();
+                    break;
+                
+                case "registerPage":
+                    pageHandler.handleRegisterPageRender();
+                    break;
+                
+                case "profilePage":
+                    pageHandler.handleProfilePageRender();
+                    break;
+
+                default:
+                    console.error("Pagename does not exist");
+                    break;
+            }
+        }
+        else{
+            pageHandler.handleHomePageRender();
+        }
     },
 
     setUserData(userData){
         switch(userData.role){
             case "doctor":
-                this.user.loggedIn = true;
-                this.user.idNum = userData.doctor_num;
+                this.user.logged_in = true;
+                this.user.id_num = userData.doctor_num;
+                this.user.firstname = userData.fullName.split(" ")[0];
+                this.user.lastname = userData.fullName.split(" ")[1];
                 break;
 
             case "patient":
-                this.user.loggedIn = true;
+                this.user.logged_in = true;
                 this.user.patient = true;
-                this.user.idNum = userData.medical_num;
-                this.user.l_name = userData.lastname;
-                this.user.f_name = userData.firstname;
-                this.user.phoneNum = userData.phone_num;
+                this.user.id_num = userData.medical_num;
+                this.user.lastname = userData.lastname;
+                this.user.firstname = userData.firstname;
+                this.user.phone_num = userData.phone_num;
                 this.user.gender = userData.gender;
                 this.user.adress = userData.adress;
-                this.user.birthDate = userData.birthDate;
-                this.user.regDate = userData.reg_date;
+                this.user.birthdate = userData.birthdate;
+                this.user.reg_date = userData.reg_date;
                 break;
 
             case "admin":
-                this.user.loggedIn = true;
+                this.user.logged_in = true;
                 this.user.admin = true;
                 break;
 
@@ -50,10 +77,10 @@ export const App = {
                 break;
         }
 
-        this.setUserToLocaleStorage();
+        this.setUserToSessionStorage();
     },
 
-    setUserToLocaleStorage(){
+    setUserToSessionStorage(){
         for(const key in this.user){
             if(this.user[key] !== null){
                 sessionStorage.setItem(key, this.user[key]);
@@ -69,9 +96,60 @@ export const App = {
         }
     },
 
-    setUserFromLocaleStorage(){
-        sessionStorage.getItem(key, this.user[key]);
-    }
+    resetSessionStorage(){
+        sessionStorage.clear();
+    },
+
+    getCurrentUserData(){
+        const userData = {};
+        for(const key in this.user){
+            if(this.user[key] !== null){
+                userData[key] = this.user[key];
+            }
+        }
+
+        return userData;
+    },
+
+    setUserFromSessionStorage(){
+        for(const key in this.user){
+            if(sessionStorage.getItem(key)){
+                this.user[key] = sessionStorage.getItem(key);
+            }
+        }
+    },
+
+    setLastPageVisitedSessionStorage(pageName){
+        sessionStorage.setItem("lastVisited", pageName);
+    },
+    
+    getChangedData(changedData){
+        const saveChangedData = {}
+
+
+        //does not work you monkey
+
+        for(const dataChangeKey in changedData){
+            saveChangedData[dataChangeKey] = changedData[dataChangeKey];
+
+            for(const key in this.user){
+                if(changedData[dataChangeKey] !== this.user[key]){
+                    delete saveChangedData[dataChangeKey];
+                }
+            }
+        }
+        return saveChangedData;
+    },
+
+    setChangedData(changedData){
+        for(const dataChangeKey in changedData){
+            for(const key in this.user){
+                if(dataChangeKey === key){
+                    this.user[key] = changedData[dataChangeKey]; 
+                }
+            }
+        }
+    },
 }
 
 

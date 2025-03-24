@@ -1,7 +1,7 @@
 import { renderHeader } from "../../components/header.js";
 import { renderProfilePageCard } from "./card.js";
 
-export function renderProfilePage(parentId){
+export function renderProfilePage(parentId, userData){
     const parent = document.querySelector(parentId);
 
     parent.innerHTML = `<div id="profile-page">
@@ -11,7 +11,7 @@ export function renderProfilePage(parentId){
                             </div>
                             <div id="cards-container"></div>
                         </div>`;
-    renderHeader("header");
+    renderHeader("header", userData);
                         
     for(const cardData of cardsData){
         renderProfilePageCard("#cards-container", cardData);

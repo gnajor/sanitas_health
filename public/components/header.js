@@ -1,6 +1,7 @@
 import { renderLoginMenu } from "./login.js";
+import { renderEditProfile } from "./editMenu.js";
 
-export function renderHeader(parentId){
+export function renderHeader(parentId, userData = null){
     const parent = document.querySelector(parentId);
     parent.innerHTML = `<nav>
                             <div class="logo-container">
@@ -15,9 +16,7 @@ export function renderHeader(parentId){
                             </div>
                             <button id="login-button">Login</button>
                         </nav>
-                        <div id="login-menu"></div>`;
-
-    renderLoginMenu("#login-menu")
+                        <div id="menu"></div>`;
 
     const doctorAnchor = parent.querySelector("#doctor-item");
     const appointmentAnchor = parent.querySelector("#appointment-item");
@@ -25,11 +24,19 @@ export function renderHeader(parentId){
     const priceListAnchor = parent.querySelector("#price-list-item");
 
     const loginButton = parent.querySelector("#login-button");
-    const loginMenu = parent.querySelector("#login-menu");
+    const menu = parent.querySelector("#menu");
+
+    if(userData){
+        renderEditProfile("#menu", userData);
+        loginButton.textContent = (userData.firstname + " " + userData.lastname);
+    }
+    else{
+        renderLoginMenu("#menu");
+    }
 
     loginButton.addEventListener("click", () => {
-        if(loginMenu.className !== "open"){
-            loginMenu.classList.add("open");
+        if(menu.className !== "open"){
+            menu.classList.add("open");
         }
     });
 
@@ -37,4 +44,16 @@ export function renderHeader(parentId){
     appointmentAnchor.addEventListener("click", () => {});
     aboutUsAnchor.addEventListener("click", () => {});
     priceListAnchor.addEventListener("click", () => {});
+}
+
+
+function headerEditOnLogin(name){
+    const loginButton = document.querySelector("header #login-button");
+    loginButton.remove();
+
+    const nav = document.querySelector("header nav");
+    const profileButton = document.createElement("button");
+    profileButton.id = "profile-button";
+    profileButton.textContent = name;
+    nav.appendChild(profileButton);
 }
