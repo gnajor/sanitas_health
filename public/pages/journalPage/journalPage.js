@@ -9,8 +9,15 @@ export function renderJournalPage(parentId, journals, userData){
                         </div>`;
 
     renderHeader("header", userData);
-    
-    for(const journal of journals){
-        renderJournalCard(".cards", journal);
+
+    if(userData.patient){
+        for(const journal of journals){
+            renderJournalCard(".cards", journal);
+        }
+    }
+    else{
+/*         for(const journal of journals){
+            renderJournalCard(".cards", journal);
+        } */
     }
 }
