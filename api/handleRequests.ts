@@ -253,9 +253,7 @@ const doctors = [
       prescription: "Paroxetine 20mg daily"
     },
     {
-      full_name: "Dr. Henry Cooper",
-      diagnosis: "Coronary Artery Disease",
-      prescription: "Aspirin 81mg daily"
+      full_name: "Dr. Henry Cooper"
     }
   ];
 
@@ -283,21 +281,19 @@ export async function handleRequests(request: Request): Promise<Response>{
         }
 
         /* TEST */
-        if(patient.medical_num === idNum){
+/*         if(patient.medical_num === idNum){
             return new Response(JSON.stringify({dbData: patient}), {status: 200});
-        }
-
-/*         if(doctor.employee_num === idNum){
-            return new Response(JSON.stringify({dbData: doctor}), {status: 200});
         } */
+
+        if(doctor.employee_num === idNum){
+            return new Response(JSON.stringify({dbData: doctor}), {status: 200});
+        }
 
         /* const data = await queryToDb(`SELECT * FROM ${tableName} WHERE id = $1`, [idNum]); */
     }
 
     else if(url.pathname === "/api/register" && request.method === "POST"){
         const dataSent = await request.json();
-        
-        
     }
 
     else if(url.pathname === "/api/editProfile" && request.method === "PATCH"){
@@ -316,7 +312,7 @@ export async function handleRequests(request: Request): Promise<Response>{
         }
     }
 
-    else if(url.pathname.startsWith("/api/appointment")){
+    else if(url.pathname.startsWith("/api/availability")){
         const urlDoctor = url.searchParams.get("doctor");
 
         return new Response(JSON.stringify({dbData: doctors.find(doctor => doctor.full_name === urlDoctor)?.appointments}));
@@ -327,6 +323,17 @@ export async function handleRequests(request: Request): Promise<Response>{
 
         return new Response(JSON.stringify({dbData: records}));
     }
+
+	else if(url.pathname.startsWith("/api/booked")){
+		const urlId = url.searchParams.get("id");
+		return new Response(JSON.stringify({dbData: records}));
+		//
+	}
+
+	else if(url.pathname.startsWith("/api/patient")){
+		const doctorId = url.searchParams.get("doctorId");
+		return new Response(JSON.stringify({dbData: records}));
+	}
 
     return new Response("Path Not Found",{status: 404});
 }   

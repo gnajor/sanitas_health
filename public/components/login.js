@@ -38,8 +38,6 @@ export function renderLoginMenu(parentId){
 
     loginButton.addEventListener("click", () => {
         pageHandler.handleLogin(medNumInput.value);
-        
-        //pageHandler.handleProfilePageRender();
     });
 
     registerButton.addEventListener("click", () => {

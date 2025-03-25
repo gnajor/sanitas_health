@@ -26,15 +26,27 @@ export async function apiCom(action, data){
             return resource;
         }
 
-        case "getDoctorAppointments": {
+        case "getDoctorAvailability": {
             options.method = "GET";
-            const resource = await fetcher(`../../api/appointment?doctor=${data}`, options);
+            const resource = await fetcher(`../../api/availability?doctor=${data}`, options);
             return resource;
         }
 
         case "getPatientJournals": {
             options.method = "GET";
             const resource = await fetcher(`../../api/journals?patient=${data}`, options);
+            return resource;
+        }
+
+        case "getPatiententsAndRecordByDoctorId": {
+            options.method = "GET";
+            const resource = await fetcher(`../../api/patient?doctorId=${data}`, options);
+            return resource; 
+        }
+
+        case "getBooked": {
+            options.method = "GET";
+            const resource = await fetcher(`../../api/booked?id=${data}`, options);
             return resource;
         }
 

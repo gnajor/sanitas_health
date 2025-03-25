@@ -10,14 +10,8 @@ export function renderJournalPage(parentId, journals, userData){
 
     renderHeader("header", userData);
 
-    if(userData.patient){
-        for(const journal of journals){
-            renderJournalCard(".cards", journal);
-        }
-    }
-    else{
-/*         for(const journal of journals){
-            renderJournalCard(".cards", journal);
-        } */
+    
+    for(const journal of journals){
+        renderJournalCard(".cards", journal);
     }
 }

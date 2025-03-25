@@ -6,6 +6,8 @@ import { renderJournalPage } from "../pages/journalPage/journalPage.js";
 import { renderViewDoctorsPage } from "../pages/patientPages/viewDoctorPage/viewDoctorPage.js";
 import { renderProfilePage } from "../pages/profilePage/profilePage.js";
 import { renderRegisterPage } from "../pages/registerPage/registerPage.js";
+import { renderViewBookingPage } from "../pages/viewBookingPage/viewBookingPage.js";
+import { renderViewPatientPage } from "../pages/viewPatientsPage/viewPatientPage.js";
 
 export const pageHandler = {
     parentId: "#wrapper",
@@ -63,7 +65,7 @@ export const pageHandler = {
     },
 
     async handleRenderBookingPage(docName){
-        const data = await apiCom("getDoctorAppointments", docName);
+        const data = await apiCom("getDoctorAvailability", docName);
 
         if(data){
             renderBookingPage(this.parentId, data.dbData, docName, App.getCurrentUserData());
@@ -74,11 +76,35 @@ export const pageHandler = {
         
     },
 
-    async handleRenderJournalPage(){
-        const data = await apiCom("getPatientJournals", App.id_num)
+    async handleRenderJournalPageFor(){
+        const data = await apiCom("getJournals", App.id_num)
 
         if(data){
             renderJournalPage(this.parentId, data.dbData, App.getCurrentUserData());
+        }
+    },
+
+    async handleRenderViewBookingForPatient(){
+        const data = await apiCom("getBooked", App.user.id_num);
+
+        if(data){
+            renderViewBookingPage(this.parentId, data.dbData, App.getCurrentUserData());
+        }
+    },
+
+    async handleRenderViewBookingForDoctor(){
+        const data = await apiCom("getBooked", App.user.id_num); 
+
+        if(data){
+            renderViewBookingPage(this.parentId, data.dbData, App.getCurrentUserData());
+        }
+    },
+
+    async handleRenderViewPatients(){
+        const data = await apiCom("getPatiententsAndRecordByDoctorId", App.user.id_num);
+
+        if(data){
+            renderViewPatientPage(this.parentId, data.dbData, App.getCurrentUserData());
         }
     },
 

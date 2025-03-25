@@ -41,7 +41,7 @@ const cardsDataPatient = [
         buttonText: "View Appointments",
         img: "../../media/icons/appointment.svg",
         func: () => {
-            //pageHandler
+            pageHandler.handleRenderViewBookingForPatient();
         }
     },
     {
@@ -71,16 +71,16 @@ const cardsDataDoctor  = [
         buttonText: "View Appointments",
         img: "../../media/icons/appointment.svg",
         func: () => {
-            //pageHandler
+            pageHandler.handleRenderViewBookingForDoctor();
         }
     },
     {
-        header: "Access Patient Journals",
+        header: "View Patients",
         text: "View your patients medical records. Ensure consent is obtained and privacy guidelines are followed.",
-        buttonText: "Access Journal",
+        buttonText: "View Patients",
         img: "../../media/icons/journal.svg",
         func: () => {
-            //pageHandler
+            pageHandler.handleRenderViewPatients();
         }
     },
     {
@@ -89,7 +89,7 @@ const cardsDataDoctor  = [
         buttonText: "Edit Schedule",
         img: "../../media/icons/edit_schedule.svg",
         func: () => {
-            //pageHandler
+            pageHandler
         }
     }
 ]
