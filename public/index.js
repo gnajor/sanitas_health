@@ -50,8 +50,9 @@ export const App = {
             case "doctor":
                 this.user.logged_in = true;
                 this.user.id_num = userData.doctor_num;
-                this.user.firstname = userData.fullName.split(" ")[0];
-                this.user.lastname = userData.fullName.split(" ")[1];
+                this.user.firstname = userData.full_name.split(" ")[0];
+                this.user.lastname = userData.full_name.split(" ")[1];
+                this.user.phone_num = userData.phone_num;
                 break;
 
             case "patient":
@@ -133,7 +134,7 @@ export const App = {
             saveChangedData[dataChangeKey] = changedData[dataChangeKey];
 
             for(const key in this.user){
-                if(changedData[dataChangeKey] !== this.user[key]){
+                if(changedData[dataChangeKey] === this.user[key]){
                     delete saveChangedData[dataChangeKey];
                 }
             }

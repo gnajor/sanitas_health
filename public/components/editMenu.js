@@ -9,7 +9,7 @@ export function renderEditProfile(parentId, userdata){
                                 <img src="../media/icons/close.svg">
                             </button>
                             <div id="title">
-                                <h2>Leo Mühl</h2>
+                                <h2>${userdata.firstname + " " + userdata.lastname} </h2>
                             </div>
                             <div id="input-containers">
                                 <div id="inputs-container" class="no-edit">
@@ -31,7 +31,7 @@ export function renderEditProfile(parentId, userdata){
                                     </div>
                                     <div class="input-container" id="adress">
                                         <span class="label-input">Adress</span>
-                                        <input value=${userdata.adress}>
+                                        <input value="${userdata.adress}">
                                     </div>
                                     <div class="input-container" id="birthdate">
                                         <span class="label-input">Birthdate</span>
@@ -64,11 +64,11 @@ export function renderEditProfile(parentId, userdata){
     const inputsContainer = parent.querySelector("#inputs-container");
 
     const select = parent.querySelector("select");
-    const fNameInput = parent.querySelector("#f-name");
-    const lNameInput = parent.querySelector("#l-name");
-    const telNumInput = parent.querySelector("#tel-num");
-    const adressInput = parent.querySelector("#adress");
-    const birthDateInput = parent.querySelector("#birthdate");
+    const fNameInput = parent.querySelector("#f-name input");
+    const lNameInput = parent.querySelector("#l-name input");
+    const telNumInput = parent.querySelector("#tel-num input");
+    const adressInput = parent.querySelector("#adress input");
+    const birthDateInput = parent.querySelector("#birthdate input");
 
 
     if(userdata.gender === "male"){
@@ -78,6 +78,17 @@ export function renderEditProfile(parentId, userdata){
     else{
         select.innerHTML = `<option value="female">Female</option>
                             <option value="male">Male</option>`;
+    }
+
+    if(!userdata.patient){
+        parent.querySelectorAll("input").forEach(element => {
+            if(element.value === "undefined" || element.value === ""){
+                element.parentElement.remove();
+            }
+        });
+
+        parent.querySelector("select").parentElement.remove();
+        parent.querySelector("#edit-button").remove();
     }
 
     closeButton.addEventListener("click", () => {
@@ -93,6 +104,7 @@ export function renderEditProfile(parentId, userdata){
             birthdate: birthDateInput.value,
             gender: select.value,
         }
+
         confirmButton.classList.add("none");
         editButton.classList.remove("none");
         inputsContainer.classList.add("no-edit");
@@ -108,7 +120,7 @@ export function renderEditProfile(parentId, userdata){
     });
 
     logoutButton.addEventListener("click", () => {
-
+        pageHandler.handleLogout();
     });
 
 }

@@ -1,0 +1,20 @@
+Doctor
+ - Can redifine schedule for each week
+ - See a list of all his/her upcoming appointments
+ 
+
+Patient
+ - Book an appointment
+ - See a list of doctors and their specialization and visit cost
+ - search for doctors with specific specialization
+ - See the available days
+ - Booking only on fridays
+ - View the diagnosis and prescription
+
+admin
+ - add a list of specialization of its doctors such as dentist, cardiologist or psychiatrist, and their visit cost;
+ - add the information about the health centers's doctors, including employee number, full name, specialization and phone_num
+ - see a list of information about the patients registered in the Health Center
+ - see a list of all upcoming appointments
+ - see a list of all medical records related to the specific patient
+ - see a list of all patients (including their medical number and full name) and their total sum of all visit cost

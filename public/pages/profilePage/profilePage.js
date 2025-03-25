@@ -1,4 +1,5 @@
 import { renderHeader } from "../../components/header.js";
+import { pageHandler } from "../../pageHandler/pageHandler.js";
 import { renderProfilePageCard } from "./card.js";
 
 export function renderProfilePage(parentId, userData){
@@ -11,15 +12,29 @@ export function renderProfilePage(parentId, userData){
                             </div>
                             <div id="cards-container"></div>
                         </div>`;
+
     renderHeader("header", userData);
-                        
-    for(const cardData of cardsData){
-        renderProfilePageCard("#cards-container", cardData);
+    let data = undefined;
+    
+    if(userData.patient){
+        data = cardsDataPatient;
+    }
+    else if(userData.admin){
+
+    }
+    else{
+        data = cardsDataDoctor;
+        const h2Elem = parent.querySelector("#top-side h2");
+        h2Elem.innerHTML = "Manage Your Patients with Ease — <br> What Do You Need?";
+    }
+
+    for(const item of data){
+        renderProfilePageCard("#cards-container", item);
     }
 }
 
 
-const cardsData = [
+const cardsDataPatient = [
     {
         header: "Booked Appointments",
         text: "Schedule appointments easily by choosing your doctor, selecting a time, and confirming your visit.",
@@ -35,14 +50,44 @@ const cardsData = [
         buttonText: "Access Journal",
         img: "../../media/icons/journal.svg",
         func: () => {
+            pageHandler.handleRenderJournalPage();
+        }
+    },
+    {
+        header: "Doctor Directory",
+        text: "Browse trusted doctors, check their availability, and book appointments with ease.",
+        buttonText: "Find a Doctor",
+        img: "../../media/icons/list.svg",
+        func: () => {
+            pageHandler.handleRenderViewDoctorPage();
+        }
+    }
+];
+
+const cardsDataDoctor  = [
+    {
+        header: "Booked Appointments",
+        text: "Check your upcoming appointments at a glance and stay ahead with your schedule.",
+        buttonText: "View Appointments",
+        img: "../../media/icons/appointment.svg",
+        func: () => {
             //pageHandler
         }
     },
     {
-        header: "Edit Your Profile",
-        text: "Securely access your medical history, prescriptions, and past appointments anytime, anywhere",
-        buttonText: "Edit Profile",
-        img: "../../media/icons/edit.svg",
+        header: "Access Patient Journals",
+        text: "View your patients medical records. Ensure consent is obtained and privacy guidelines are followed.",
+        buttonText: "Access Journal",
+        img: "../../media/icons/journal.svg",
+        func: () => {
+            //pageHandler
+        }
+    },
+    {
+        header: "Edit Schedule",
+        text: "Modify your available hours or appointment slots smoothly to manage your schedule effectively.",
+        buttonText: "Edit Schedule",
+        img: "../../media/icons/edit_schedule.svg",
         func: () => {
             //pageHandler
         }

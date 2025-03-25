@@ -13,10 +13,28 @@ export async function apiCom(action, data){
         }
 
         case "editProfile": {
-            options.method = "POST";
+            options.method = "PATCH";
             options.body = data;
 
             const resource = await fetcher("../../api/editProfile", options);
+            return resource;
+        }
+
+        case "getDoctor": {
+            options.method = "GET";
+            const resource = await fetcher(`../../api/doctors?doctor=${data}`, options);
+            return resource;
+        }
+
+        case "getDoctorAppointments": {
+            options.method = "GET";
+            const resource = await fetcher(`../../api/appointment?doctor=${data}`, options);
+            return resource;
+        }
+
+        case "getPatientJournals": {
+            options.method = "GET";
+            const resource = await fetcher(`../../api/journals?patient=${data}`, options);
             return resource;
         }
 
@@ -42,7 +60,6 @@ async function fetcher(url, options){
 
         if(!response.ok){
             const errorMessage = await response.text();
-
             throw new Error(`${errorMessage}`);
         };
 

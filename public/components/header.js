@@ -45,15 +45,3 @@ export function renderHeader(parentId, userData = null){
     aboutUsAnchor.addEventListener("click", () => {});
     priceListAnchor.addEventListener("click", () => {});
 }
-
-
-function headerEditOnLogin(name){
-    const loginButton = document.querySelector("header #login-button");
-    loginButton.remove();
-
-    const nav = document.querySelector("header nav");
-    const profileButton = document.createElement("button");
-    profileButton.id = "profile-button";
-    profileButton.textContent = name;
-    nav.appendChild(profileButton);
-}
