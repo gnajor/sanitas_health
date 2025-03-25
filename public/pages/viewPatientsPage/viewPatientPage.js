@@ -11,6 +11,6 @@ export function renderViewPatientPage(parentId, patients, userData){
         renderHeader("header", userData);
 
         for(const patient of patients){
-            renderViewPatientCard(".cards", patient);
+            renderViewPatientCard(".cards", patient, userData);
         }
 }

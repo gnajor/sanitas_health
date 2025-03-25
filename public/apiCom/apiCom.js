@@ -12,6 +12,14 @@ export async function apiCom(action, data){
             return resource;
         }
 
+        case "register": {
+            options.method = "POST";
+            options.body = data
+
+            const resource = await fetcher("../../api/register", options);
+            return resource;
+        }
+
         case "editProfile": {
             options.method = "PATCH";
             options.body = data;
@@ -48,6 +56,18 @@ export async function apiCom(action, data){
             options.method = "GET";
             const resource = await fetcher(`../../api/booked?id=${data}`, options);
             return resource;
+        }
+
+        case "getSchedule": {
+            options.method = "GET";
+            const resource = await fetcher(`../../api/schedule?id=${data}`, options)
+            return resource;
+        }
+
+        case "getPatientsAndRecord": {
+            options.method = "GET";
+            const resource = await fetcher(`../../api/patients?patient=${data}`, options);
+            return resource; 
         }
 
         default: {

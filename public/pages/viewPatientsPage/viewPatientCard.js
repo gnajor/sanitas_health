@@ -1,4 +1,4 @@
-export function renderViewPatientCard(parentId, patient){
+export function renderViewPatientCard(parentId, patient, userData){
     const parent = document.querySelector(parentId);
 
     const card = document.createElement("div");
@@ -19,7 +19,7 @@ export function renderViewPatientCard(parentId, patient){
                     </div>
                     <hr>`;
 
-    if(!patient.diagnosis){        
+    if(!patient.diagnosis && !userData.admin){        
         card.querySelector(".medical-record").remove();
         
         const createButton = document.createElement("button");

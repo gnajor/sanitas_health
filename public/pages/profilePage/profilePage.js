@@ -20,7 +20,7 @@ export function renderProfilePage(parentId, userData){
         data = cardsDataPatient;
     }
     else if(userData.admin){
-
+        data = cardsDataAdmin;
     }
     else{
         data = cardsDataDoctor;
@@ -89,7 +89,40 @@ const cardsDataDoctor  = [
         buttonText: "Edit Schedule",
         img: "../../media/icons/edit_schedule.svg",
         func: () => {
-            pageHandler
+            pageHandler.handleRenderSchedulePage();
         }
     }
-]
+];
+
+
+const cardsDataAdmin  = [
+    {
+        header: "Booked Appointments",
+        text: "Check every upcoming appointment at a glance and stay ahead with your schedule.",
+        buttonText: "View All Appointments",
+        img: "../../media/icons/appointment.svg",
+        func: () => {
+            pageHandler.handleRenderViewBookingForAdmin();
+        }
+    },
+    {
+        header: "View Patients",
+        text: "View every patient's medical records. Ensure consent is obtained and privacy guidelines are followed.",
+        buttonText: "View Patients",
+        img: "../../media/icons/journal.svg",
+        func: () => {
+            pageHandler.handleRenderViewPatientsForAdmin();
+        }
+    },
+
+    {
+        header: "Create Doctor",
+        text: "Create a doctor to the system with their details to streamline appointments and patient care.",
+        buttonText: "Create Doctor",
+        img: "../../media/icons/add.svg",
+        func: () => {
+         
+        }
+    }
+];
+

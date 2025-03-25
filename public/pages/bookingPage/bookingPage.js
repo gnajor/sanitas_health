@@ -1,4 +1,4 @@
-import { renderHeader } from "../../../components/header.js";
+import { renderHeader } from "../../components/header.js";
 import { renderBookingCard } from "./bookingCard.js";
 
 export function renderBookingPage(parentId, appointments, doctorName, userData){

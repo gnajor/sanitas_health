@@ -24,238 +24,238 @@ const doctor: Record<string, string | number> = {
 
 const doctors = [
     {
-      full_name: "Dr. Emily Carter",
-      phone_num: "+1-555-1234",
-      specialisation: "Cardiologist",
-      cost: "$250",
-      appointments: [
-        {
-          date: "2025-03-26",
-          start_time: "09:00 AM",
-          end_time: "10:00 AM"
-        },
-        {
-          date: "2025-03-27",
-          start_time: "11:00 AM",
-          end_time: "12:00 PM"
-        }
-      ]
+        full_name: "Dr. Emily Carter",
+        phone_num: "+1-555-1234",
+        specialisation: "Cardiologist",
+        cost: "$250",
+        appointments: [
+            {
+                date: "2025-03-26",
+                start_time: "09:00 AM",
+                end_time: "10:00 AM"
+            },
+            {
+                date: "2025-03-27",
+                start_time: "11:00 AM",
+                end_time: "12:00 PM"
+            }
+        ]
     },
     {
-      full_name: "Dr. James Wilson",
-      phone_num: "+1-555-5678",
-      specialisation: "Dentist",
-      cost: "$150",
-      appointments: [
-        {
-          date: "2025-03-26",
-          start_time: "10:30 AM",
-          end_time: "11:30 AM"
-        },
-        {
-          date: "2025-03-28",
-          start_time: "02:00 PM",
-          end_time: "03:00 PM"
-        }
-      ]
+        full_name: "Dr. James Wilson",
+        phone_num: "+1-555-5678",
+        specialisation: "Dentist",
+        cost: "$150",
+        appointments: [
+            {
+                date: "2025-03-26",
+                start_time: "10:30 AM",
+                end_time: "11:30 AM"
+            },
+            {
+                date: "2025-03-28",
+                start_time: "02:00 PM",
+                end_time: "03:00 PM"
+            }
+        ]
     },
     {
-      full_name: "Dr. Sarah Thompson",
-      phone_num: "+1-555-8765",
-      specialisation: "Psychiatrist",
-      cost: "$200",
-      appointments: [
-        {
-          date: "2025-03-26",
-          start_time: "01:00 PM",
-          end_time: "02:00 PM"
-        },
-        {
-          date: "2025-03-29",
-          start_time: "03:30 PM",
-          end_time: "04:30 PM"
-        }
-      ]
+        full_name: "Dr. Sarah Thompson",
+        phone_num: "+1-555-8765",
+        specialisation: "Psychiatrist",
+        cost: "$200",
+        appointments: [
+            {
+                date: "2025-03-26",
+                start_time: "01:00 PM",
+                end_time: "02:00 PM"
+            },
+            {
+                date: "2025-03-29",
+                start_time: "03:30 PM",
+                end_time: "04:30 PM"
+            }
+        ]
     },
     {
-      full_name: "Dr. Robert Hayes",
-      phone_num: "+1-555-4321",
-      specialisation: "Cardiologist",
-      cost: "$300",
-      appointments: [
-        {
-          date: "2025-03-27",
-          start_time: "09:30 AM",
-          end_time: "10:30 AM"
-        },
-        {
-          date: "2025-03-28",
-          start_time: "01:30 PM",
-          end_time: "02:30 PM"
-        }
-      ]
+        full_name: "Dr. Robert Hayes",
+        phone_num: "+1-555-4321",
+        specialisation: "Cardiologist",
+        cost: "$300",
+        appointments: [
+            {
+                date: "2025-03-27",
+                start_time: "09:30 AM",
+                end_time: "10:30 AM"
+            },
+            {
+                date: "2025-03-28",
+                start_time: "01:30 PM",
+                end_time: "02:30 PM"
+            }
+        ]
     },
     {
-      full_name: "Dr. Olivia Martinez",
-      phone_num: "+1-555-6789",
-      specialisation: "Dentist",
-      cost: "$180",
-      appointments: [
-        {
-          date: "2025-03-26",
-          start_time: "08:00 AM",
-          end_time: "09:00 AM"
-        },
-        {
-          date: "2025-03-29",
-          start_time: "04:00 PM",
-          end_time: "05:00 PM"
-        }
-      ]
+        full_name: "Dr. Olivia Martinez",
+        phone_num: "+1-555-6789",
+        specialisation: "Dentist",
+        cost: "$180",
+        appointments: [
+            {
+                date: "2025-03-26",
+                start_time: "08:00 AM",
+                end_time: "09:00 AM"
+            },
+            {
+                date: "2025-03-29",
+                start_time: "04:00 PM",
+                end_time: "05:00 PM"
+            }
+        ]
     },
     {
-      full_name: "Dr. Ethan Walker",
-      phone_num: "+1-555-2468",
-      specialisation: "Psychiatrist",
-      cost: "$220",
-      appointments: [
-        {
-          date: "2025-03-27",
-          start_time: "10:00 AM",
-          end_time: "11:00 AM"
-        },
-        {
-          date: "2025-03-29",
-          start_time: "12:00 PM",
-          end_time: "01:00 PM"
-        }
-      ]
+        full_name: "Dr. Ethan Walker",
+        phone_num: "+1-555-2468",
+        specialisation: "Psychiatrist",
+        cost: "$220",
+        appointments: [
+            {
+                date: "2025-03-27",
+                start_time: "10:00 AM",
+                end_time: "11:00 AM"
+            },
+            {
+                date: "2025-03-29",
+                start_time: "12:00 PM",
+                end_time: "01:00 PM"
+            }
+        ]
     },
     {
-      full_name: "Dr. Sophia Bennett",
-      phone_num: "+1-555-1357",
-      specialisation: "Cardiologist",
-      cost: "$275",
-      appointments: [
-        {
-          date: "2025-03-26",
-          start_time: "10:00 AM",
-          end_time: "11:00 AM"
-        },
-        {
-          date: "2025-03-28",
-          start_time: "02:30 PM",
-          end_time: "03:30 PM"
-        }
-      ]
+        full_name: "Dr. Sophia Bennett",
+        phone_num: "+1-555-1357",
+        specialisation: "Cardiologist",
+        cost: "$275",
+        appointments: [
+            {
+                date: "2025-03-26",
+                start_time: "10:00 AM",
+                end_time: "11:00 AM"
+            },
+            {
+                date: "2025-03-28",
+                start_time: "02:30 PM",
+                end_time: "03:30 PM"
+            }
+        ]
     },
     {
-      full_name: "Dr. Daniel Foster",
-      phone_num: "+1-555-9753",
-      specialisation: "Dentist",
-      cost: "$160",
-      appointments: [
-        {
-          date: "2025-03-27",
-          start_time: "03:00 PM",
-          end_time: "04:00 PM"
-        },
-        {
-          date: "2025-03-29",
-          start_time: "09:00 AM",
-          end_time: "10:00 AM"
-        }
-      ]
+        full_name: "Dr. Daniel Foster",
+        phone_num: "+1-555-9753",
+        specialisation: "Dentist",
+        cost: "$160",
+        appointments: [
+            {
+                date: "2025-03-27",
+                start_time: "03:00 PM",
+                end_time: "04:00 PM"
+            },
+            {
+                date: "2025-03-29",
+                start_time: "09:00 AM",
+                end_time: "10:00 AM"
+            }
+        ]
     },
     {
-      full_name: "Dr. Mia Reynolds",
-      phone_num: "+1-555-8642",
-      specialisation: "Psychiatrist",
-      cost: "$210",
-      appointments: [
-        {
-          date: "2025-03-27",
-          start_time: "11:00 AM",
-          end_time: "12:00 PM"
-        },
-        {
-          date: "2025-03-28",
-          start_time: "03:00 PM",
-          end_time: "04:00 PM"
-        }
-      ]
+        full_name: "Dr. Mia Reynolds",
+        phone_num: "+1-555-8642",
+        specialisation: "Psychiatrist",
+        cost: "$210",
+        appointments: [
+            {
+                date: "2025-03-27",
+                start_time: "11:00 AM",
+                end_time: "12:00 PM"
+            },
+            {
+                date: "2025-03-28",
+                start_time: "03:00 PM",
+                end_time: "04:00 PM"
+            }
+        ]
     },
     {
-      full_name: "Dr. Henry Cooper",
-      phone_num: "+1-555-1122",
-      specialisation: "Cardiologist",
-      cost: "$350",
-      appointments: [
-        {
-          date: "2025-03-26",
-          start_time: "02:00 PM",
-          end_time: "03:00 PM"
-        },
-        {
-          date: "2025-03-29",
-          start_time: "10:00 AM",
-          end_time: "11:00 AM"
-        }
-      ]
+        full_name: "Dr. Henry Cooper",
+        phone_num: "+1-555-1122",
+        specialisation: "Cardiologist",
+        cost: "$350",
+        appointments: [
+            {
+                date: "2025-03-26",
+                start_time: "02:00 PM",
+                end_time: "03:00 PM"
+            },
+            {
+                date: "2025-03-29",
+                start_time: "10:00 AM",
+                end_time: "11:00 AM"
+            }
+        ]
     }
-  ];
+];
 
 
-  const records = [
+const records = [
     {
-      full_name: "Dr. Emily Carter",
-      diagnosis: "Hypertension",
-      prescription: "Atenolol 50mg daily"
+        full_name: "Dr. Emily Carter",
+        diagnosis: "Hypertension",
+        prescription: "Atenolol 50mg daily"
     },
     {
-      full_name: "Dr. James Wilson",
-      diagnosis: "Tooth Decay",
-      prescription: "Amoxicillin 500mg three times a day for 7 days"
+        full_name: "Dr. James Wilson",
+        diagnosis: "Tooth Decay",
+        prescription: "Amoxicillin 500mg three times a day for 7 days"
     },
     {
-      full_name: "Dr. Sarah Thompson",
-      diagnosis: "Anxiety Disorder",
-      prescription: "Sertraline 25mg daily"
+        full_name: "Dr. Sarah Thompson",
+        diagnosis: "Anxiety Disorder",
+        prescription: "Sertraline 25mg daily"
     },
     {
-      full_name: "Dr. Robert Hayes",
-      diagnosis: "Heart Disease",
-      prescription: "Lisinopril 10mg daily"
+        full_name: "Dr. Robert Hayes",
+        diagnosis: "Heart Disease",
+        prescription: "Lisinopril 10mg daily"
     },
     {
-      full_name: "Dr. Olivia Martinez",
-      diagnosis: "Gum Inflammation",
-      prescription: "Chlorhexidine mouthwash"
+        full_name: "Dr. Olivia Martinez",
+        diagnosis: "Gum Inflammation",
+        prescription: "Chlorhexidine mouthwash"
     },
     {
-      full_name: "Dr. Ethan Walker",
-      diagnosis: "Depression",
-      prescription: "Escitalopram 10mg daily"
+        full_name: "Dr. Ethan Walker",
+        diagnosis: "Depression",
+        prescription: "Escitalopram 10mg daily"
     },
     {
-      full_name: "Dr. Sophia Bennett",
-      diagnosis: "Arrhythmia",
-      prescription: "Atenolol 25mg daily"
+        full_name: "Dr. Sophia Bennett",
+        diagnosis: "Arrhythmia",
+        prescription: "Atenolol 25mg daily"
     },
     {
-      full_name: "Dr. Daniel Foster",
-      diagnosis: "Cavities",
-      prescription: "Fluoride toothpaste"
+        full_name: "Dr. Daniel Foster",
+        diagnosis: "Cavities",
+        prescription: "Fluoride toothpaste"
     },
     {
-      full_name: "Dr. Mia Reynolds",
-      diagnosis: "Post-Traumatic Stress Disorder",
-      prescription: "Paroxetine 20mg daily"
+        full_name: "Dr. Mia Reynolds",
+        diagnosis: "Post-Traumatic Stress Disorder",
+        prescription: "Paroxetine 20mg daily"
     },
     {
-      full_name: "Dr. Henry Cooper"
+        full_name: "Dr. Henry Cooper"
     }
-  ];
+];
 
 /* -------------------- */
 
@@ -294,6 +294,7 @@ export async function handleRequests(request: Request): Promise<Response>{
 
     else if(url.pathname === "/api/register" && request.method === "POST"){
         const dataSent = await request.json();
+        return new Response(JSON.stringify({dbData: dataSent}),{status: 200});
     }
 
     else if(url.pathname === "/api/editProfile" && request.method === "PATCH"){
@@ -325,15 +326,39 @@ export async function handleRequests(request: Request): Promise<Response>{
     }
 
 	else if(url.pathname.startsWith("/api/booked")){
-		const urlId = url.searchParams.get("id");
-		return new Response(JSON.stringify({dbData: records}));
-		//
+        const urlId = url.searchParams.get("id");
+
+        if(urlId === "all"){
+            //admin
+        }
+        else if(urlId?.length === 6){
+            //patient
+        }
+        else if(urlId?.length === 9){
+            //doctor
+        }
+
+        return new Response(JSON.stringify({dbData: records}));
 	}
 
 	else if(url.pathname.startsWith("/api/patient")){
 		const doctorId = url.searchParams.get("doctorId");
 		return new Response(JSON.stringify({dbData: records}));
 	}
+
+    else if(url.pathname.startsWith("/api/schedule")){
+        const urlId = url.searchParams.get("id");
+        return new Response(JSON.stringify({dbData: records}));
+    }
+
+    else if(url.pathname.startsWith("/api/patients")){
+        const urlId = url.searchParams.get("patient");
+        
+        if(urlId === "all"){
+            //query
+        }
+        return new Response(JSON.stringify({dbData: records}));
+    }
 
     return new Response("Path Not Found",{status: 404});
 }   

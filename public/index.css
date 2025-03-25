@@ -575,8 +575,13 @@ header nav button{
 }
 
 #register-page #right-side .input-container:nth-child(3),
-#register-page #right-side .input-container:nth-child(6){
+#register-page #right-side .input-container:nth-child(6),
+#register-page #right-side .input-container:nth-child(7){
     grid-column: 1 / span 2;
+}
+
+#register-page #right-side .input-container:nth-child(7){
+    pointer-events: none;
 }
 
 #register-page #right-side button{

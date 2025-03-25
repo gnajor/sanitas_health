@@ -1,4 +1,4 @@
-import { pageHandler } from "../../../pageHandler/pageHandler.js";
+import { pageHandler } from "../../pageHandler/pageHandler.js";
 
 export function renderDoctorCard(parentId, doctor){
     const parent = document.querySelector(parentId);

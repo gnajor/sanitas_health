@@ -70,6 +70,8 @@ export const App = {
 
             case "admin":
                 this.user.logged_in = true;
+                this.user.firstname = "Mr."
+                this.user.lastname = "admin"
                 this.user.admin = true;
                 break;
 

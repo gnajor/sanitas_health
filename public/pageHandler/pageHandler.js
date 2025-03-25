@@ -1,13 +1,14 @@
 import { apiCom } from "../apiCom/apiCom.js";
 import { App } from "../index.js";
 import { renderHomePage } from "../pages/homePage/homePage.js";
-import { renderBookingPage } from "../pages/patientPages/bookingPage/bookingPage.js";
+import { renderBookingPage } from "../pages/bookingPage/bookingPage.js";
 import { renderJournalPage } from "../pages/journalPage/journalPage.js";
-import { renderViewDoctorsPage } from "../pages/patientPages/viewDoctorPage/viewDoctorPage.js";
+import { renderViewDoctorsPage } from "../pages/viewDoctorPage/viewDoctorPage.js";
 import { renderProfilePage } from "../pages/profilePage/profilePage.js";
 import { renderRegisterPage } from "../pages/registerPage/registerPage.js";
 import { renderViewBookingPage } from "../pages/viewBookingPage/viewBookingPage.js";
 import { renderViewPatientPage } from "../pages/viewPatientsPage/viewPatientPage.js";
+import { renderSchedulePage } from "../pages/schedulePage/schedulePage.js";
 
 export const pageHandler = {
     parentId: "#wrapper",
@@ -32,6 +33,8 @@ export const pageHandler = {
             App.setUserData({
                 role: "admin"
             });
+
+            this.handleProfilePageRender(this.parentId, App.getCurrentUserData());
         }
         else{
             const resource = await apiCom("login", {
@@ -76,7 +79,7 @@ export const pageHandler = {
         
     },
 
-    async handleRenderJournalPageFor(){
+    async handleRenderJournalPage(){
         const data = await apiCom("getJournals", App.id_num)
 
         if(data){
@@ -100,11 +103,44 @@ export const pageHandler = {
         }
     },
 
+    async handleRenderViewBookingForAdmin(){
+        const data = await apiCom("getBooked", "all");
+
+        if(data){
+            renderViewBookingPage(this.parentId, data.dbData, App.getCurrentUserData());
+        }
+    },
+
     async handleRenderViewPatients(){
         const data = await apiCom("getPatiententsAndRecordByDoctorId", App.user.id_num);
 
         if(data){
             renderViewPatientPage(this.parentId, data.dbData, App.getCurrentUserData());
+        }
+    },
+
+    async handleRenderViewPatientsForAdmin(){
+        const data = await apiCom("getPatientsAndRecord", "all");
+
+        if(data){
+            renderViewPatientPage(this.parentId, data.dbData, App.getCurrentUserData());
+        }
+    },
+
+    async handleRenderSchedulePage(){
+        const data = await apiCom("getSchedule", App.user.id_num);
+
+        if(data){
+            renderSchedulePage(this.parentId, data.dbData, App.getCurrentUserData());
+        }
+    },
+
+    async handleRegisterPatient(userData){
+        const data = await apiCom("register", userData);
+
+        if(data){
+            App.setUserData(data.dbData);
+            this.handleProfilePageRender();
         }
     },
 

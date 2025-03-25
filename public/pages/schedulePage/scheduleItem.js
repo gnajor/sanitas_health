@@ -9,5 +9,12 @@ export function renderScheduleItem(parentId, scheduleItem){
                         <span>${scheduleItem.start_time}</span>
                         <span>${scheduleItem.end_time}</span>
                         <button>Book</button>
-                    </div`;
+                    </div>
+                    <hr>`;
+    
+    const bookButton = item.querySelector("button");
+
+    bookButton.addEventListener("click", () => {
+
+    });
 }

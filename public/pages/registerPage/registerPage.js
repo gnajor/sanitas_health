@@ -1,4 +1,5 @@
 import { pageHandler } from "../../pageHandler/pageHandler.js";
+import { generateMedicalNumber } from "../../utils/utils.js";
 
 export function renderRegisterPage(parentId){
     const parent = document.querySelector(parentId);
@@ -50,6 +51,10 @@ export function renderRegisterPage(parentId){
                                             <span class="label-input" type="number">Telephone number</span>
                                             <input placeholder="eg.0701601325">
                                         </div>
+                                        <div class="input-container" id="medical-num">
+                                            <span class="label-input" type="number">Medical number</span>
+                                            <input placeholder="Will autogenerate">
+                                        </div>
                                     </div>
                                     <button>Create My Account</button>
                                 </div>
@@ -58,14 +63,28 @@ export function renderRegisterPage(parentId){
 
     const telInput = parent.querySelector("#tel-num input");
     const birthInput = parent.querySelector("#birthdate input");
-    const genderInput = parent.querySelector("#gender input");
+    const genderInput = parent.querySelector("#gender select");
     const adressInput = parent.querySelector("#adress input");
     const lastNameInput = parent.querySelector("#l-name input");
     const firstNameInput = parent.querySelector("#f-name input");
+    const medicalNumInput = parent.querySelector("#medical-num input");
+
+    medicalNumInput.value = generateMedicalNumber();
 
     const registerButton = parent.querySelector("#right-side button");
     registerButton.addEventListener("click", () => {
-        pageHandler.handleProfilePageRender();
+        const userData = {
+            phone_num: telInput.value,
+            firstname: firstNameInput.value,
+            lastname: lastNameInput.value,
+            adress: adressInput.value,
+            gender: genderInput.value,
+            birthdate: birthInput.value,
+            medical_num: medicalNumInput.value,
+            role: "patient"
+        }
+
+        pageHandler.handleRegisterPatient(userData);
     }); 
 
     const backButton = parent.querySelector("#left-side button");
