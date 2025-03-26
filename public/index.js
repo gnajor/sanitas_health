@@ -49,7 +49,7 @@ export const App = {
         switch(userData.role){
             case "doctor":
                 this.user.logged_in = true;
-                this.user.id_num = userData.doctor_num;
+                this.user.id_num = userData.employee_num;
                 this.user.firstname = userData.full_name.split(" ")[0];
                 this.user.lastname = userData.full_name.split(" ")[1];
                 this.user.phone_num = userData.phone_num;

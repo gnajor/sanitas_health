@@ -4,7 +4,7 @@ import { renderScheduleItem } from "./scheduleItem.js";
 export function renderSchedulePage(parentId, scheduleItems, userData){
     const parent = document.querySelector(parentId);
 
-    parent.innerHTML = `<div id="schedule-page">
+    parent.innerHTML = `<div id="schedule-page" class="page">
                             <header></header>
                             <div class="cards-container"></div>
                         </div>`;
@@ -16,7 +16,3 @@ export function renderSchedulePage(parentId, scheduleItems, userData){
     }
 }
 
-//9 - 9.30
-//9.30 - 10
-//10.00 - 10.30
-//10.30 - 11

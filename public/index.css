@@ -667,7 +667,34 @@ header nav button{
 
 
 
+/* others */
 
+#wrapper .page button:not(.close){
+    padding: 0.5rem 1rem;
+    background-color: var(--logo-color);
+    color:var(--text-color-white);
+    border-radius: 4px;
+}
+
+#wrapper .page > div > div *:not(hr){
+    padding-left:1rem;
+}
+
+#create-doctor-page main{
+    padding:0 2rem;
+}
+
+#create-doctor-page main #employee-num{
+    pointer-events: none;
+}
+
+#schedule-page .cards-container{
+    display: flex;
+    flex-wrap: wrap;
+    gap:1rem;
+    justify-content: center;
+    padding-top:2rem;
+}
 
 
 

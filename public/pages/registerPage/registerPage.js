@@ -1,5 +1,5 @@
 import { pageHandler } from "../../pageHandler/pageHandler.js";
-import { generateMedicalNumber } from "../../utils/utils.js";
+import { generateNumberCombination } from "../../utils/utils.js";
 
 export function renderRegisterPage(parentId){
     const parent = document.querySelector(parentId);
@@ -69,7 +69,7 @@ export function renderRegisterPage(parentId){
     const firstNameInput = parent.querySelector("#f-name input");
     const medicalNumInput = parent.querySelector("#medical-num input");
 
-    medicalNumInput.value = generateMedicalNumber();
+    medicalNumInput.value = generateNumberCombination(9);
 
     const registerButton = parent.querySelector("#right-side button");
     registerButton.addEventListener("click", () => {

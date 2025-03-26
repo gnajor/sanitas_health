@@ -2,7 +2,6 @@ import { pageHandler } from "../pageHandler/pageHandler.js";
 
 export function renderEditProfile(parentId, userdata){
     const parent = document.querySelector(parentId);
-    console.log(userdata);
 
     parent.innerHTML = `<div id="edit-profile">
                             <button class="close">

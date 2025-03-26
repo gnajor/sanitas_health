@@ -121,7 +121,17 @@ const cardsDataAdmin  = [
         buttonText: "Create Doctor",
         img: "../../media/icons/add.svg",
         func: () => {
-         
+            pageHandler.handleRenderCreateDoctorPage();
+        }
+    },
+    
+    {
+        header: "Delete Doctor",
+        text: "Delete a doctor from the system to keep records up to date and manage active staff efficiently.",
+        buttonText: "View Doctors",
+        img: "../../media/icons/delete.svg",
+        func: () => {
+            pageHandler.handleRenderViewDoctorPage();
         }
     }
 ];

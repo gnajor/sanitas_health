@@ -3,7 +3,7 @@ import { renderBookingCard } from "./bookingCard.js";
 
 export function renderBookingPage(parentId, appointments, doctorName, userData){
     const parent = document.querySelector(parentId);
-    parent.innerHTML = `<div id="booking-page">
+    parent.innerHTML = `<div id="booking-page" class="page">
                             <header></header>
                             <h2>${doctorName}</h2>
                             <hr>

@@ -3,14 +3,13 @@ import { renderJournalCard } from "./journalCard.js";
 
 export function renderJournalPage(parentId, journals, userData){
     const parent = document.querySelector(parentId);
-    parent.innerHTML = `<div id="journal-page">
+    parent.innerHTML = `<div id="journal-page" class="page">
                             <header></header>
                             <div class="cards"></div>
                         </div>`;
 
     renderHeader("header", userData);
 
-    
     for(const journal of journals){
         renderJournalCard(".cards", journal);
     }

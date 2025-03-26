@@ -1,6 +1,6 @@
 import { pageHandler } from "../../pageHandler/pageHandler.js";
 
-export function renderDoctorCard(parentId, doctor){
+export function renderDoctorCard(parentId, doctor, userData){
     const parent = document.querySelector(parentId);
 
     const card = document.createElement("div");
@@ -12,12 +12,22 @@ export function renderDoctorCard(parentId, doctor){
                         <p>${doctor.specialisation}</p>
                         <p>${doctor.phone_num}</p>
                         <p>${doctor.cost}</p>
+                        <button>View available days</button>
                     </div>
-                    <button>View available days</button>
                     <hr>`;
-    
     const button = card.querySelector("button");
-    button.addEventListener("click", () => {
-        pageHandler.handleRenderBookingPage(doctor.full_name);
-    });
+
+    if(userData.admin){
+        button.textContent = "Delete";
+        button.addEventListener("click", () => {
+            pageHandler.handleDeleteDoctor({employee_id: doctor.employee_id});
+            
+            card.remove();
+        });
+    }
+    else{
+        button.addEventListener("click", () => {
+            pageHandler.handleRenderBookingPage(doctor.full_name);
+        });
+    }
 }

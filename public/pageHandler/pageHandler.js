@@ -9,6 +9,7 @@ import { renderRegisterPage } from "../pages/registerPage/registerPage.js";
 import { renderViewBookingPage } from "../pages/viewBookingPage/viewBookingPage.js";
 import { renderViewPatientPage } from "../pages/viewPatientsPage/viewPatientPage.js";
 import { renderSchedulePage } from "../pages/schedulePage/schedulePage.js";
+import { renderCreateDoctorPage } from "../pages/createDoctorPage/createDoctorPage.js";
 
 export const pageHandler = {
     parentId: "#wrapper",
@@ -42,7 +43,7 @@ export const pageHandler = {
             });
 
             if(resource){
-                App.setUserData(resource.dbData);
+                App.setUserData(resource);
                 this.handleProfilePageRender();
             }
         }
@@ -99,7 +100,7 @@ export const pageHandler = {
         const data = await apiCom("getBooked", App.user.id_num); 
 
         if(data){
-            renderViewBookingPage(this.parentId, data.dbData, App.getCurrentUserData());
+            renderViewBookingPage(this.parentId, data, App.getCurrentUserData());
         }
     },
 
@@ -140,8 +141,33 @@ export const pageHandler = {
 
         if(data){
             App.setUserData(data.dbData);
-            this.handleProfilePageRender();
+            this.handleProfilePageRender(this.parentId, App.getCurrentUserData());
         }
+    },
+
+    handleRenderCreateDoctorPage(){
+        renderCreateDoctorPage(this.parentId, App.getCurrentUserData());
+    },
+
+    async handleCreateDoctor(doctorInfo){
+        const data = await apiCom("createDoctor", doctorInfo);
+        console.log(data);
+
+        if(data){
+            this.handleProfilePageRender(this.parentId, App.getCurrentUserData());
+        }
+    },
+
+    async handleSetSchedule(bookingInfo){
+        const data = await apiCom("setSchedule", bookingInfo);
+
+        console.log(data);
+    },
+
+    async handleDeleteDoctor(doctorInfo){
+        const data = await apiCom("deleteDoctor", doctorInfo);
+
+        console.log(data);
     },
 
     handleLogout(){
