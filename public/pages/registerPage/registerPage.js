@@ -31,9 +31,9 @@ export function renderRegisterPage(parentId){
                                             <span class="label-input">Last name</span>
                                             <input placeholder="Enter your last name">
                                         </div>
-                                        <div class="input-container" id="adress">
+                                        <div class="input-container" id="address">
                                             <span class="label-input">Adress</span>
-                                            <input placeholder="Enter your adress">
+                                            <input placeholder="Enter your address">
                                         </div>
                                         <div class="input-container" id="gender">
                                             <span class="label-input">Gender</span>
@@ -64,7 +64,7 @@ export function renderRegisterPage(parentId){
     const telInput = parent.querySelector("#tel-num input");
     const birthInput = parent.querySelector("#birthdate input");
     const genderInput = parent.querySelector("#gender select");
-    const adressInput = parent.querySelector("#adress input");
+    const addressInput = parent.querySelector("#address input");
     const lastNameInput = parent.querySelector("#l-name input");
     const firstNameInput = parent.querySelector("#f-name input");
     const medicalNumInput = parent.querySelector("#medical-num input");
@@ -73,14 +73,19 @@ export function renderRegisterPage(parentId){
 
     const registerButton = parent.querySelector("#right-side button");
     registerButton.addEventListener("click", () => {
+        const currentDate = new Date();
+        const formattedDate = currentDate.toISOString().split('T')[0];
+
+
         const userData = {
             phone_num: telInput.value,
             firstname: firstNameInput.value,
             lastname: lastNameInput.value,
-            adress: adressInput.value,
+            address: addressInput.value,
             gender: genderInput.value,
             birthdate: birthInput.value,
             medical_num: medicalNumInput.value,
+            reg_date: formattedDate,
             role: "patient"
         }
 

@@ -114,7 +114,6 @@ const cardsDataAdmin  = [
             pageHandler.handleRenderViewPatientsForAdmin();
         }
     },
-
     {
         header: "Create Doctor",
         text: "Create a doctor to the system with their details to streamline appointments and patient care.",
@@ -124,7 +123,6 @@ const cardsDataAdmin  = [
             pageHandler.handleRenderCreateDoctorPage();
         }
     },
-    
     {
         header: "Delete Doctor",
         text: "Delete a doctor from the system to keep records up to date and manage active staff efficiently.",

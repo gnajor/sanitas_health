@@ -18,3 +18,17 @@ admin
  - see a list of all upcoming appointments
  - see a list of all medical records related to the specific patient
  - see a list of all patients (including their medical number and full name) and their total sum of all visit cost
+
+
+
+
+
+Left
+ - ViewPatientCard --> edit medical Record
+ - DeleteDoctor Admin --> CASCADE or not
+ - viewEvery patient and sum ADMIN
+ - editschedule
+ - booking
+
+
+ 

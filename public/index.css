@@ -317,7 +317,7 @@ header nav button{
 
 #edit-profile #inputs-container #f-name,
 #edit-profile #inputs-container #l-name,
-#edit-profile #inputs-container #adress{
+#edit-profile #inputs-container #address{
     grid-column: 1 / 2 span;
 }
 
@@ -676,16 +676,12 @@ header nav button{
     border-radius: 4px;
 }
 
-#wrapper .page > div > div *:not(hr){
+#wrapper .page > div > div > *:not(hr){
     padding-left:1rem;
 }
 
 #create-doctor-page main{
     padding:0 2rem;
-}
-
-#create-doctor-page main #employee-num{
-    pointer-events: none;
 }
 
 #schedule-page .cards-container{

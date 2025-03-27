@@ -9,9 +9,9 @@ export function renderDoctorCard(parentId, doctor, userData){
 
     card.innerHTML = `<div class="text-container">
                         <h3>${doctor.full_name}</h3>
-                        <p>${doctor.specialisation}</p>
+                        <p>${doctor.name}</p>
                         <p>${doctor.phone_num}</p>
-                        <p>${doctor.cost}</p>
+                        <p>${doctor.visit_cost}kr</p>
                         <button>View available days</button>
                     </div>
                     <hr>`;
@@ -20,14 +20,13 @@ export function renderDoctorCard(parentId, doctor, userData){
     if(userData.admin){
         button.textContent = "Delete";
         button.addEventListener("click", () => {
-            pageHandler.handleDeleteDoctor({employee_id: doctor.employee_id});
-            
+            pageHandler.handleDeleteDoctor(doctor.employee_num);
             card.remove();
         });
     }
     else{
         button.addEventListener("click", () => {
-            pageHandler.handleRenderBookingPage(doctor.full_name);
+            pageHandler.handleRenderBookingPage(doctor.employee_num);
         });
     }
 }

@@ -10,6 +10,10 @@ export function renderJournalPage(parentId, journals, userData){
 
     renderHeader("header", userData);
 
+    if(journals.length === 0){
+        parent.querySelector(".cards").innerHTML = "<h2>No upcoming appointments</h2>"
+    }
+
     for(const journal of journals){
         renderJournalCard(".cards", journal);
     }

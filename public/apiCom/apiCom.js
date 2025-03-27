@@ -53,8 +53,6 @@ export async function apiCom(action, data){
         }
 
         case "getBooked": {
-            console.log(data);
-
             options.method = "GET";
             const resource = await fetcher(`../../api/booked?id=${data}`, options);
             return resource;
@@ -68,7 +66,8 @@ export async function apiCom(action, data){
 
         case "getPatientsAndRecord": {
             options.method = "GET";
-            const resource = await fetcher(`../../api/patients?patient=${data}`, options);
+            console.log(data);
+            const resource = await fetcher(`../../api/records?patient=${data}`, options);
             return resource; 
         }
 
@@ -90,6 +89,20 @@ export async function apiCom(action, data){
             options.method = "DELETE";
             options.body = data;
             const resource = await fetcher(`../../api/doctor/delete`, options);
+            return resource;
+        }
+
+        case "bookAppointment": {
+            options.method = "POST";
+            options.body = data;
+            const resource = await fetcher(`../../api/appointmentBooking`, options);
+            return resource;
+        }
+
+        case "createMedicalRecord": {
+            options.method = "POST";
+            options.body = data;
+            const resource = await fetcher(`../../api/createRecord`, options);
             return resource;
         }
 

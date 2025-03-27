@@ -3,6 +3,8 @@ import { pageHandler } from "../pageHandler/pageHandler.js";
 export function renderEditProfile(parentId, userdata){
     const parent = document.querySelector(parentId);
 
+    console.log(userdata)
+
     parent.innerHTML = `<div id="edit-profile">
                             <button class="close">
                                 <img src="../media/icons/close.svg">
@@ -20,26 +22,6 @@ export function renderEditProfile(parentId, userdata){
                                         <span class="label-input">Last name</span>
                                         <input value=${userdata.lastname}>
                                     </div>
-                                    <div class="input-container" id="tel-num">
-                                        <span class="label-input" type="number">Telephone number</span>
-                                        <input value=${userdata.phone_num}>
-                                    </div>
-                                    <div class="input-container" id="gender">
-                                        <span class="label-input">Gender</span>
-                                        <select></select>
-                                    </div>
-                                    <div class="input-container" id="adress">
-                                        <span class="label-input">Adress</span>
-                                        <input value="${userdata.adress}">
-                                    </div>
-                                    <div class="input-container" id="birthdate">
-                                        <span class="label-input">Birthdate</span>
-                                        <input value=${userdata.birthdate} type="date">
-                                    </div>
-                                    <div class="input-container" id="med-num">
-                                        <span class="label-input" type="number">Medical number</span>
-                                        <input value=${userdata.id_num}>
-                                    </div>
                                 </div>
                             </div>
                             <div id="button-container">
@@ -55,28 +37,77 @@ export function renderEditProfile(parentId, userdata){
                             </div>
                         </div>`;
 
-    const editButton = parent.querySelector("#edit-button");
-    const logoutButton = parent.querySelector("#logout-button");
-    const closeButton = parent.querySelector(".close");
-    const confirmButton = parent.querySelector("#confirm-button");
 
-    const inputsContainer = parent.querySelector("#inputs-container");
+        const editButton = parent.querySelector("#edit-button");
+        const logoutButton = parent.querySelector("#logout-button");
+        const closeButton = parent.querySelector(".close");
+        const confirmButton = parent.querySelector("#confirm-button");
 
-    const select = parent.querySelector("select");
-    const fNameInput = parent.querySelector("#f-name input");
-    const lNameInput = parent.querySelector("#l-name input");
-    const telNumInput = parent.querySelector("#tel-num input");
-    const adressInput = parent.querySelector("#adress input");
-    const birthDateInput = parent.querySelector("#birthdate input");
+    if(userdata.patient){
+        const inputsContainer = parent.querySelector("#inputs-container");
+
+        inputsContainer.innerHTML += `  <div class="input-container" id="tel-num">
+                                        <span class="label-input" type="number">Telephone number</span>
+                                        <input value=${userdata.phone_num}>
+                                    </div>
+                                    <div class="input-container" id="gender">
+                                        <span class="label-input">Gender</span>
+                                        <select></select>
+                                    </div>
+                                    <div class="input-container" id="address">
+                                        <span class="label-input">Adress</span>
+                                        <input value="${userdata.address}">
+                                    </div>
+                                    <div class="input-container" id="birthdate">
+                                        <span class="label-input">Birthdate</span>
+                                        <input value=${userdata.birthdate.slice(0, 10)} type="date">
+                                    </div>
+                                    <div class="input-container" id="med-num">
+                                        <span class="label-input" type="number">Medical number</span>
+                                        <input value=${userdata.id_num}>
+                                    </div>`;
+
+        const select = parent.querySelector("select");
+        const fNameInput = parent.querySelector("#f-name input");
+        const lNameInput = parent.querySelector("#l-name input");
+        const telNumInput = parent.querySelector("#tel-num input");
+        const addressInput = parent.querySelector("#address input");
+        const birthDateInput = parent.querySelector("#birthdate input");
+
+        confirmButton.addEventListener("click", () => {
+            const dataChange = {
+                firstname: fNameInput.value,
+                lastname: lNameInput.value,
+                phone_num: telNumInput.value,
+                address: addressInput.value,
+                birthdate: birthDateInput.value,
+                gender: select.value,
+                medical_num: userdata.id_num,
+            }
+
+            confirmButton.classList.add("none");
+            editButton.classList.remove("none");
+            inputsContainer.classList.add("no-edit");
 
 
-    if(userdata.gender === "male"){
-        select.innerHTML = `<option value="male">Male</option>
-                            <option value="female">Female</option>`;
-    }
-    else{
-        select.innerHTML = `<option value="female">Female</option>
-                            <option value="male">Male</option>`;
+            pageHandler.handleProfileChange(dataChange);
+        });
+
+        editButton.addEventListener("click", () => {
+            editButton.classList.add("none");
+            inputsContainer.classList.remove("no-edit");
+            confirmButton.classList.remove("none");
+        });
+
+        if(userdata.gender === "male"){
+            select.innerHTML = `<option value="male">Male</option>
+                                <option value="female">Female</option>`;
+        }
+        else{
+            select.innerHTML = `<option value="female">Female</option>
+                                <option value="male">Male</option>`;
+        }
+
     }
 
     if(!userdata.patient){
@@ -86,36 +117,11 @@ export function renderEditProfile(parentId, userdata){
             }
         });
 
-        parent.querySelector("select").parentElement.remove();
-        parent.querySelector("#edit-button").remove();
+        editButton.remove();
     }
 
     closeButton.addEventListener("click", () => {
         parent.classList.remove("open");
-    });
-
-    confirmButton.addEventListener("click", () => {
-        const dataChange = {
-            firstname: fNameInput.value,
-            lastname: lNameInput.value,
-            phone_num: telNumInput.value,
-            adress: adressInput.value,
-            birthdate: birthDateInput.value,
-            gender: select.value,
-        }
-
-        confirmButton.classList.add("none");
-        editButton.classList.remove("none");
-        inputsContainer.classList.add("no-edit");
-
-
-        pageHandler.handleProfileChange(dataChange);
-    });
-
-    editButton.addEventListener("click", () => {
-        editButton.classList.add("none");
-        inputsContainer.classList.remove("no-edit");
-        confirmButton.classList.remove("none");
     });
 
     logoutButton.addEventListener("click", () => {

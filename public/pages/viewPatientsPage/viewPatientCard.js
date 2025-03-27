@@ -1,3 +1,5 @@
+import { pageHandler } from "../../pageHandler/pageHandler.js";
+
 export function renderViewPatientCard(parentId, patient, userData){
     const parent = document.querySelector(parentId);
 
@@ -6,10 +8,10 @@ export function renderViewPatientCard(parentId, patient, userData){
     parent.appendChild(card);
 
     card.innerHTML = `<div class="text-container">
-                        <h3>${patient.full_name}</h3>
-                        <p>${patient.gender}</p>
-                        <p>${patient.adress}</p>
-                        <p>${patient.phone_num}</p>
+                        <h2>Patient: ${patient.firstname + " " + patient.lastname}</h2>
+                        <p>Visiting Doctor: ${patient.doctor_name}</p>
+                        <p>Start Time: ${patient.start_time}</p>
+                        <p>End Time: ${patient.end_time}</p>
                         <div class="medical-record">
                             <h3>Medical Record</h3>
                             <p>${patient.diagnosis}</p>
@@ -18,6 +20,8 @@ export function renderViewPatientCard(parentId, patient, userData){
                         </div>
                     </div>
                     <hr>`;
+
+                    console.log(patient)
 
     if(!patient.diagnosis && !userData.admin){        
         card.querySelector(".medical-record").remove();
@@ -63,6 +67,9 @@ export function renderViewPatientCard(parentId, patient, userData){
                                                 <p>${changedData.diagnosis}</p>
                                                 <p>${changedData.prescription}</p>
                                             </div>`;
+
+                pageHandler
+
             }, {once: true});
         }, {once: true}); 
     }

@@ -10,11 +10,11 @@ export function renderBookedCard(parentId, appointment, userData){
                         <p>Booked on: ${appointment.booked_on}</p>
                         <p>Appointment start: ${appointment.start_time}</p>
                         <p>Appointment end: ${appointment.end_time}</p>
-                        <p></p>
                     </div>
                     <hr>`;
 
-    
-
-    
+    if(userData.admin){
+        const textContainer = card.querySelector(".text-container");
+        textContainer.innerHTML += `<p>Doctor: ${appointment.full_name}</p>`;
+    }
 }

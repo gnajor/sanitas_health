@@ -17,8 +17,7 @@ export function renderScheduleItem(parentId, scheduleItem){
 
     bookButton.addEventListener("click", () => {
         const timeData = {
-            start_time:scheduleItem.start_time,
-            end_time: scheduleItem.end_time
+            id: scheduleItem.id
         }
 
         pageHandler.handleSetSchedule(timeData);

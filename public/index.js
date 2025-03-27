@@ -10,7 +10,7 @@ export const App = {
         lastname: null,
         phone_num: null,
         gender: null,
-        adress: null,
+        address: null,
         birthdate: null,
         reg_date: null,
     },
@@ -63,7 +63,7 @@ export const App = {
                 this.user.firstname = userData.firstname;
                 this.user.phone_num = userData.phone_num;
                 this.user.gender = userData.gender;
-                this.user.adress = userData.adress;
+                this.user.address = userData.address;
                 this.user.birthdate = userData.birthdate;
                 this.user.reg_date = userData.reg_date;
                 break;
